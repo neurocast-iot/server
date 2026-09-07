@@ -6,6 +6,8 @@
 
 NeuroCast 是一个开源的 IoT 设备管理平台，提供设备管理、实时流媒体、远程控制等功能。
 
+> 🖥️ [前端效果预览](https://github.com/neurocast-iot/docs/blob/main/cn/README.md#%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BAconsole)
+
 ## ✨ 特性
 
 - **设备管理**：设备 CRUD、批量创建、产品管理（设备类型）
