@@ -22,7 +22,7 @@ spring:
     redis:
       host: redis
       port: 6379
-      password: mMDPvXF5yYpsj2T6
+      password: your-redis-password
       lettuce:
         pool:
           max-active: 8
@@ -34,7 +34,7 @@ spring:
 neurocast:
   # JWT 认证（新项目新增，旧项目无登录体系；密钥请按需修改）
   jwt:
-    secret: neurocast-dev2-secret-key-please-change-it!
+    secret: your-jwt-secret-change-me
     header: Authorization
     token-prefix: "Bearer "
     access-token-expire-seconds: 7200
@@ -44,39 +44,39 @@ neurocast:
   thingsboard:
     url: http://thingsboard:9090/
     username: tenant@thingsboard.org
-    password: tenant
+    password: your-thingsboard-password
     device-profile-id: 03746350-914b-11f1-b4f6-932edadd00d3
 
   # SRS 流媒体服务器（旧 srs.server.* + remote-rpc.srs.url）
   srs:
-    api-url: http://47.121.24.61:1985
-    base-url: https://dev-neurocast-api.joycrystal.com/
-    push-camera-stream-url: rtmp://47.121.24.61/live/{deviceUid}?accessToken={accessToken}
+    api-url: http://your-server-ip:1985
+    base-url: https://your-domain.com/
+    push-camera-stream-url: rtmp://your-server-ip/live/{deviceUid}?accessToken={accessToken}
 
   # FTP 文件服务器（旧 ftp.server.*，下发给设备的系统配置）
   ftp:
-    host: 47.121.24.61
+    host: your-server-ip
     port: 21
     username: camera_ftp
-    password: EFeZ5yawAQJ80Y7oHtIS
+    password: your-ftp-password
     files-path: /home/ubuntu/docker/ftp/data/files
 
   # FRP 内网穿透（旧 frps.* + remote-rpc.ports.url）
   frp:
-    server-addr: 47.121.24.61
+    server-addr: your-frp-server-ip
     server-port: 10000
     method: token
-    token: oEfKXvHqPcLNYQkw467F
-    port-service-url: http://47.121.24.61:5000
+    token: your-frp-token
+    port-service-url: http://your-frp-server-ip:5000
 
   # 媒体文件（旧 file.*）
   file:
     base-path: ./files
     # 注意：新下载接口路径为 /api/file/download（旧为 /api/v1/camera/file/download），网关路由需同步
-    download-base-url: https://dev-neurocast-api.joycrystal.com/api/file/download
+    download-base-url: https://your-domain.com/api/file/download
     image-retention-days: 7
     video-retention-days: 7
     upload-max-size: 104857600
     chunk-expire-hours: 24
-    upload-file-base-url: https://dev-neurocast-api.joycrystal.com/api/device/file/upload
-    upload-file-api-key: da20956ac0c74eeebf6eb9a90b46dff7
+    upload-file-base-url: https://your-domain.com/api/device/file/upload
+    upload-file-api-key: your-upload-api-key
