@@ -53,3 +53,6 @@ hs_err_pid*
 
 # Qoder
 .qoder/
+
+# Local docs (not for remote)
+docs/
