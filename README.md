@@ -158,9 +158,9 @@ java -jar neurocast-bootstrap/target/neurocast-bootstrap-1.0.0.jar --spring.prof
 - [固件端源码](https://github.com/neurocast-iot/firmware) — 设备端嵌入式固件
 - [管理平台](https://github.com/neurocast-iot/platform) — Web 管理前端
 
-## 💬 交流
+## 💬 联系
 
-如有问题，请提交 Issue 或联系维护者。
+如有问题或合作意向，请发送邮件至 [hnngm163@gmail.com](mailto:hnngm163@gmail.com)。
 
 ---
 
