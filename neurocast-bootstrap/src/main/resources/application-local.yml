@@ -1,0 +1,106 @@
+server:
+  port: 18189
+
+logging:
+  level:
+    com.neurocast.system.mapper: DEBUG
+    com.neurocast.device.mapper: DEBUG
+    com.neurocast.media.mapper: DEBUG
+    com.neurocast.ota.mapper: DEBUG
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/neurocast
+    username: thingsboard
+    password: "thingsboard"
+    druid:
+      # 初始连接数
+      initial-size: 5
+      # 最小连接池数量
+      min-idle: 10
+      # 最大连接池数量
+      max-active: 20
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      max-evictable-idle-time-millis: 900000
+      validation-query: select 'x'
+      # 申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效
+      test-while-idle: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: mMDPvXF5yYpsj2T6
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 100ms
+
+# ==================== 平台自定义配置 ====================
+neurocast:
+  # JWT 认证（新项目新增，旧项目无登录体系；密钥请按需修改）
+  jwt:
+    secret: neurocast-local-secret-key-please-change-it!
+    header: Authorization
+    token-prefix: "Bearer "
+    access-token-expire-seconds: 7200
+    refresh-token-expire-days: 7
+
+  # ThingsBoard 集成（旧 remote-rpc.thingsboard.*）
+  thingsboard:
+    url: http://localhost:9090/
+    username: tenant@thingsboard.org
+    password: tenant
+    device-profile-id: 03746350-914b-11f1-b4f6-932edadd00d3
+
+  # SRS 流媒体服务器（旧 srs.server.* + remote-rpc.srs.url）
+  srs:
+    api-url: http://47.121.24.61:1985
+    base-url: http://47.121.24.61:8080/
+    push-camera-stream-url: rtmp://47.121.24.61/live/{deviceUid}?accessToken={accessToken}
+
+  # FTP 文件服务器（旧 ftp.server.*，下发给设备的系统配置）
+  ftp:
+    host: 54.64.130.67
+    port: 21
+    username: camera_ftp
+    password: EFeZ5yawAQJ80Y7oHtIS
+    files-path: /home/ubuntu/docker/ftp/data/files
+
+  # FRP 内网穿透（旧 frps.* + remote-rpc.ports.url）
+  frp:
+    server-addr: 47.121.24.61
+    server-port: 10000
+    method: token
+    token: oEfKXvHqPcLNYQkw467F
+    port-service-url: http://47.121.24.61:5000
+
+  # 媒体文件（旧 file.*）
+  file:
+    base-path: ./files
+    # 注意：新下载接口路径为 /api/file/download（旧为 /api/v1/camera/file/download），网关路由需同步
+    download-base-url: https://dev-neurocast-api.joycrystal.com/api/file/download
+    # 旧 file.days=7 同时作用于图片与录像
+    image-retention-days: 7
+    video-retention-days: 7
+    upload-max-size: 104857600
+    chunk-expire-hours: 24
+    upload-file-base-url: https://dev-neurocast-api.joycrystal.com/api/device/file/upload
+    upload-file-api-key: da20956ac0c74eeebf6eb9a90b46dff7
+
+  # HLS 视频回放
+  hls:
+    ffmpeg-path: ffmpeg
+    ffprobe-path: ffprobe
+    target-segment-duration: 10
+    cache-retention-hours: 24
+    padding-seconds: 30

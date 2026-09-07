@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.neurocast</groupId>
+        <artifactId>neurocast-server</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>neurocast-device</artifactId>
+    <name>neurocast-device</name>
+    <description>设备模块：设备管理、配置下发、远程控制、FRP 内网穿透</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.neurocast</groupId>
+            <artifactId>neurocast-framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

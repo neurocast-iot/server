@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neurocast.device.mapper.DeviceMapper">
+
+    <!-- 设备 + 产品信息 JOIN 查询结果映射 -->
+    <resultMap id="deviceWithProduct" type="com.neurocast.device.domain.vo.DeviceVo" autoMapping="true">
+        <association property="product"
+                     javaType="com.neurocast.device.domain.vo.DeviceVo$ProductInfo"
+                     columnPrefix="p_" autoMapping="true"/>
+    </resultMap>
+
+    <!-- 分页查询设备（含产品信息） -->
+    <select id="selectPageWithProduct" resultMap="deviceWithProduct">
+        SELECT d.id, d.device_uid AS "deviceUid", d.tb_device_id AS "tbDeviceId",
+               d.name, d.status, d.lasted_online_time AS "lastedOnlineTime",
+               d.lasted_offline_time AS "lastedOfflineTime", d.create_time AS "createTime",
+               p.id AS "p_id", p.name AS "p_name", p.model AS "p_model"
+        FROM device d
+        LEFT JOIN product p ON d.product_id = p.id
+        <where>
+            <if test="query.deviceUids != null and query.deviceUids.size() > 0">
+                AND d.device_uid IN
+                <foreach collection="query.deviceUids" item="uid" open="(" separator="," close=")">
+                    #{uid}
+                </foreach>
+            </if>
+            <if test="query.deviceUids == null or query.deviceUids.size() == 0">
+                <if test="query.deviceUid != null and query.deviceUid != ''">
+                    AND d.device_uid LIKE CONCAT('%', #{query.deviceUid}, '%')
+                </if>
+            </if>
+            <if test="query.productId != null and query.productId != ''">
+                AND d.product_id = #{query.productId}
+            </if>
+            <if test="query.status != null">
+                AND d.status = #{query.status}
+            </if>
+        </where>
+        ORDER BY d.create_time DESC
+    </select>
+
+</mapper>

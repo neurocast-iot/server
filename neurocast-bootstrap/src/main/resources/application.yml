@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: neurocast-server
+  profiles:
+    # 环境配置：local / dev / dev2
+    active: local
+  threads:
+    virtual:
+      enabled: true
+  servlet:
+    multipart:
+      # 单个文件最大大小（断点续传分片一般 1~5MB，批量上传文件可能更大）
+      max-file-size: 100MB
+      # 单次请求总大小
+      max-request-size: 200MB
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    banner: false
+
+logging:
+  level:
+    com.neurocast: info
+    com.neurocast.media.mapper: debug
+    com.neurocast.device.mapper: debug
+    com.neurocast.system.mapper: debug
+    com.neurocast.ota.mapper: debug
