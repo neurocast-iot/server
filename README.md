@@ -3,8 +3,9 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green.svg)](https://spring.io/projects/spring-boot)
+[![WebRTC](https://img.shields.io/badge/WebRTC-P2P%20%2B%20SFU-red.svg)](https://webrtc.org/)
 
-NeuroCast 是一个开源的 IoT 设备管理平台，提供设备管理、实时流媒体、远程控制等功能。
+NeuroCast 是一套完整的音视频解决方案的服务端，以 **WebRTC** 为核心实时视频方案，提供设备管理、WebRTC/FLV 实时直播、HLS 回放、远程控制等功能。
 
 > 🖥️ [前端效果预览](https://github.com/neurocast-iot/docs/blob/main/cn/README.md#%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BAconsole)
 
@@ -41,7 +42,7 @@ server/
 - **PostgreSQL**
 - **Redis**
 - **ThingsBoard**（设备管理与遥测）
-- **SRS**（流媒体服务器）
+- **SRS**（WebRTC SFU 流媒体服务器）
 - **FRP**（内网穿透）
 
 ## 📋 前置要求
