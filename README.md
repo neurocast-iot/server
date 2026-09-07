@@ -117,9 +117,16 @@ java -jar neurocast-bootstrap/target/neurocast-bootstrap-1.0.0.jar --spring.prof
 - API 文档：http://localhost:18189/doc.html
 - 默认管理员：admin / admin123
 
-## 📖 API 文档
+## 📖 文档
 
-详细的 API 文档请参考 [API接口文档](docs/API接口文档.md)
+完整的项目文档（含服务端、固件端、管理平台截图）请参考 [NeuroCast 文档中心](https://github.com/neurocast-iot/docs)。
+
+| 文档 | 说明 |
+|------|------|
+| [服务端架构](https://github.com/neurocast-iot/docs/blob/main/cn/server/architecture.md) | 系统概述、功能模块、技术栈、认证机制 |
+| [API 接口文档](https://github.com/neurocast-iot/docs/blob/main/cn/server/api/overview.md) | 认证方式、响应格式、错误码总表 |
+| [OSD 配置协议](https://github.com/neurocast-iot/docs/blob/main/cn/server/protocol/osd_elements_config_api.md) | OSD 水印配置 API |
+| [触发器配置协议](https://github.com/neurocast-iot/docs/blob/main/cn/server/protocol/triggers_config_api.md) | 事件触发器配置 API |
 
 ## 🤝 贡献指南
 
@@ -145,10 +152,9 @@ java -jar neurocast-bootstrap/target/neurocast-bootstrap-1.0.0.jar --spring.prof
 
 ## 🔗 相关链接
 
-- [功能架构文档](docs/功能架构文档.md)
-- [API接口文档](docs/API接口文档.md)
-- [OSD 配置协议](docs/osd_elements_config_api.md)
-- [触发器配置协议](docs/triggers_config_api.md)
+- [文档中心](https://github.com/neurocast-iot/docs) — 完整项目文档（服务端、固件端、管理平台截图）
+- [固件端源码](https://github.com/neurocast-iot/firmware) — 设备端嵌入式固件
+- [管理平台](https://github.com/neurocast-iot/platform) — Web 管理前端
 
 ## 💬 交流
 
