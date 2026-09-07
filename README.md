@@ -19,7 +19,7 @@ NeuroCast 是一个开源的 IoT 设备管理平台，提供设备管理、实�
 ## 🏗️ 架构
 
 ```
-neurocast-community/
+server/
 ├── neurocast-bootstrap    # 启动模块
 ├── neurocast-common       # 公共模块（常量、工具类、异常）
 ├── neurocast-device       # 设备管理（设备、产品、配置、指令）
@@ -56,8 +56,8 @@ neurocast-community/
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-org/neurocast-community.git
-cd neurocast-community
+git clone https://github.com/neurocast-iot/server.git
+cd server
 ```
 
 ### 2. 初始化数据库
@@ -84,17 +84,22 @@ spring:
     redis:
       host: localhost
       port: 6379
+      password: your_redis_password
 
 neurocast:
+  jwt:
+    secret: your-jwt-secret-change-me
   thingsboard:
-    base-url: http://localhost:9090
-    admin-token: your_tb_admin_token
+    url: http://localhost:9090/
+    username: tenant@thingsboard.org
+    password: your-thingsboard-password
   srs:
-    base-url: http://localhost:1985
+    api-url: http://localhost:1985
+    base-url: http://localhost:8080/
   frp:
-    server-addr: your_frp_server
-    server-port: 7000
-    token: your_frp_token
+    server-addr: your-frp-server-ip
+    server-port: 10000
+    token: your-frp-token
 ```
 
 ### 4. 编译运行
@@ -109,7 +114,7 @@ java -jar neurocast-bootstrap/target/neurocast-bootstrap-1.0.0.jar --spring.prof
 
 ### 5. 访问
 
-- API 文档：http://localhost:8080/doc.html
+- API 文档：http://localhost:18189/doc.html
 - 默认管理员：admin / admin123
 
 ## 📖 API 文档
